@@ -1,0 +1,94 @@
+/*
+* Pagination
+*/
+body {
+
+    .pagination, .nav-links {
+        width: 100%;
+        margin: 0 0 @margin;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .page-numbers {
+            .paginationElement;
+            list-style: none;
+            background: #fff;
+            background: 0;
+            border: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        li {
+            .paginationElement;
+        }
+
+        .screen-reader-text {
+            display: none;
+        }
+    }
+}
+
+.paginationElement {
+    display: inline-block;
+    margin: 0 5px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    outline: 0;
+    transition: 0.2s ease-in-out;
+    color: var(--primaryColour);
+    text-decoration: none;
+
+    a {
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid transparent;
+    }
+
+    &.current, &.active {
+
+        a {
+            background: 0;
+            border: 1px solid var(--primaryColour);
+            color: var(--primaryColour);
+        }
+    }
+
+    &:after {
+        color: var(--primaryColour);
+    }
+
+    &.firstItem {
+        display: none;
+    }
+
+    &.lastItem, &.dots, &.pageXOfY {
+        background: 0;
+    }
+
+    a {
+        display: block;
+        cursor: pointer;
+    }
+
+    &.dots {
+        cursor: default;
+        color: var(--textColour);
+        font-weight: normal;
+    }
+
+    &.disabled {
+
+        a {
+            opacity: 0.5;
+            cursor: default;
+        }
+    }
+}

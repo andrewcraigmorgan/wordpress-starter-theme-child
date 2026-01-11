@@ -1,0 +1,72 @@
+.breadcrumbWrap {
+    clear: both;
+    padding: @margin 0;
+    position: relative;
+    background: var(--layerLightColour);
+    margin: 0 0 @margin;
+
+    .breadcrumbs {
+        .wrapperWidth;
+        padding: 0;
+        white-space: nowrap;
+        text-align: left;
+
+        @media @mobile, @tablet {
+            padding: 0 @margin;
+        }
+
+        span {
+
+            &:first-child {
+
+                > a {
+                    padding-left: 0;
+                }
+            }
+        }
+
+        span a, span strong {
+            display: inline-block;
+            position: relative;
+            padding: 0px 25px;
+            list-style-type: none;
+            text-decoration :none;
+            font-weight: normal;
+
+            a {
+                color: var(--textColour);
+                text-decoration: none;
+                font-weight: normal;
+
+                &.active, &:hover {
+                    color: var(--primaryColour);
+                }
+            }
+
+            &:last-child {
+
+                a {
+                    font-weight: bold;
+                }
+
+                &:after {
+                    content: '';
+                }
+            }
+        }
+
+        .breadcrumb_last {
+            font-weight: bold;
+        }
+
+        span {
+
+            a {
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

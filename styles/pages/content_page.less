@@ -1,0 +1,59 @@
+/*
+ * Content + Sidebar
+ */
+@import '../../styles/base/buttons';
+
+.contentPageWrap {
+    .wrapperWidth;
+    padding: 40px 0;
+
+    @media @mobile, @tablet {
+        padding: 20px 0;
+    }
+
+    .contentWrap, .contentSidebar {
+        float: left;
+    }
+
+    .contentWrap {
+        width: 100%;
+        margin-top: -5px;
+    }
+
+    .contentSidebar + .contentWrap {
+        width: ~"calc(100% - 340px)";
+
+        @media @mobile {
+            width: 100%;
+            border: 0;
+            padding: 0;
+        }
+    }
+
+    .contentSidebar {
+        width: 260px;
+        margin: 0 80px 0 0;
+
+        @media @mobile {
+            margin: 0;
+        }
+
+        .contentSidebarSection {
+            margin: 0 0 20px;
+        }
+
+        @media @mobile {
+            width: 100%;
+            padding-bottom: 15px;
+
+            h5 {
+                .button();
+                width: 100%;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    }
+}

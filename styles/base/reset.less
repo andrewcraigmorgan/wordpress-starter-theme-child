@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+// Text Selection Colours
+::-moz-selection {
+    background: var(--mtcBlue);
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: var(--mtcBlue);
+    color: #fff;
+    text-shadow: none;
+}
+
+// Horizontal Rule
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    background: var(--borderColor);
+    margin: @margin 0;
+    padding: 0;
+    clear: both;
+}
+
+p {
+    margin-top: 0;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    outline: 0;
+}
+
+a:hover, a:active {
+    outline: 0;
+}
+
+// Form Reset Styles
+input, textarea {
+    box-shadow: none;
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input, textarea, select, label {
+    box-shadow: none;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+// Clearing for general use
+.clear {
+    clear: both;
+}
+
+// Relative Positioning
+.relative {
+    position: relative;
+}
+
+// Images
+img {
+    max-width: 100%;
+}
+
+.left, .alignleft {
+    float: left;
+    display: block;
+}
+
+.right, .alignright {
+    float: right;
+    display: block;
+}
+
+/*
+ * max-width: none; overrides max-width: 100% from above
+ * which distorts the icons on gmaps
+ */
+#map img {
+    max-width: none;
+}
+
+picture {
+    display: block;
+}
+
+/*
+ * Button Reset
+ */
+button {
+    border: none;
+    padding: 0;
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    line-height: normal;
+    cursor: pointer;
+}
+
+input, button {
+
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+}
+
+/*
+ * Site Styles
+ */
+.wrapperWidth {
+    max-width: var(--wrapperWidth);
+    min-width: @margin;
+    margin: 0 auto;
+
+    @media @mobile, @tablet {
+        padding: 0 @margin;
+    }
+}
+
+.wrapper {
+    .wrapperWidth;
+}
+
+#siteWrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    overflow: hidden;
+    flex: 1 1 auto;
+
+    .siteInnerWrapper {
+        flex: 1 1 auto;
+    }
+}
+
+/*
+ * Body Tag
+ */
+body {
+    margin: 0;
+    font-family: var(--bodyFont);
+    color: var(--textColour);
+    line-height: 1.462;
+    min-width: 320px;
+    max-width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    font-weight: normal;
+
+    &.flyoutActive {
+        overflow-x: hidden;
+    }
+}
+
+/*
+ * Vue.js display none cloaking to prevent FOUC
+ */
+[v-cloak] {
+    display: none;
+}
+
+/*
+ * Admin toolbar on front end
+ */
+#wp-toolbar {
+    display: flex;
+}
+
+#wp-admin-bar-root-default {
+    flex: 1 1 auto;
+}
+
+/*
+ * Gutenberg block width
+ */
+.wp-block {
+    max-width: var(--wrapperWidth);
+}
+
+.editor-styles-wrapper {
+    max-width: var(--wrapperWidth);
+    padding: 0 @margin;
+}

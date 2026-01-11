@@ -1,0 +1,53 @@
+.wrapper() {
+    max-width: var(--wrapperWidth);
+    margin: 0 auto;
+
+    @media @mobile {
+        padding: 0 @margin;
+    }
+
+    @media @tablet {
+        padding: 0 @margin;
+    }
+}
+
+.rems(@value) {
+    @rem_value : (@value / @baseFontSize);
+    font-size: ~"@{rem_value}rem";
+}
+
+// Fade Dropdown Hover
+.fadeNav() {
+
+    li {
+        position: relative;
+
+        ul {
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 400ms linear 0s, visibility 0s linear 400ms;
+        }
+
+        &:hover {
+
+            > ul {
+                opacity: 1;
+                visibility: visible;
+                transition-delay: 0s;
+            }
+        }
+    }
+}
+
+.outline(@colour: currentColor, @offset: 0, @important: false) {
+    outline-offset: @offset;
+
+    & when (@important = false) {
+        outline: 2px solid @colour;
+    }
+
+    & when (@important = true) {
+        outline: 2px solid @colour !important;
+    }
+}

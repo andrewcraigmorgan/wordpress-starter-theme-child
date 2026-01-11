@@ -1,0 +1,324 @@
+/*
+ * Form Styles
+ */
+
+form {
+
+    fieldset {
+        border: 0;
+        margin: 0 0 @margin;
+        padding: 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    legend {
+        display: none;
+    }
+}
+
+.row {
+    width: 100%;
+    margin: 0 0 @margin;
+
+    label {
+        font-family: var(--bodyFont);
+        color: var(--textColour);
+        margin: 0 0 (@margin / 2);
+        display: block;
+    }
+
+    input:not([type='checkbox']):not([type='radio']):not([class='vs__search']),
+    textarea {
+        position: relative;
+        width: 100%;
+        border: 1px solid var(--borderColour);
+        z-index: 10;
+        color: var(--textColour);
+        font-family: var(--bodyFont);
+        background: var(--layerLightColour);
+        padding: 15px;
+        .rems(15);
+        line-height: 1;
+        display: block;
+
+        &::placeholder {
+            opacity: 0.5;
+        }
+
+        &:focus-visible {
+            outline: 1px solid var(--primaryColour);
+        }
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    .validationMessage {
+        font-family: var(--primaryFont);
+        padding: 10px 0;
+        z-index: 5;
+        border-radius: var(--borderRadius);
+        .rems(14);
+        display: none;
+        line-height: 22px;
+    }
+
+    .buttonInline {
+        clear: both;
+        display: flex;
+
+        @media @mobile {
+            display: block;
+        }
+
+        &:after {
+            display: none;
+        }
+
+        select, input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            min-width: 0;
+
+            @media @mobile {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+
+        button, .button, .buttonAlt {
+            margin: 0;
+            white-space: nowrap;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            @media @mobile {
+                width: 100%;
+                border-radius: var(--borderRadius);
+            }
+        }
+    }
+
+    &.errorWrap, &.successWrap {
+
+        .validationMessage {
+            display: block;
+        }
+
+        .inputWrap {
+            position: relative;
+
+            &:after {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                z-index: 10;
+            }
+        }
+    }
+
+    &.errorWrap {
+
+        .validationMessage {
+            color: var(--informationColour);
+        }
+
+        .inputWrap {
+
+            input:not([type='checkbox']):not([type='radio']):not([class='vs__search']),
+            textarea {
+                border: 2px solid var(--informationColour);
+            }
+        }
+    }
+
+    &.successWrap {
+
+        .validationMessage {
+            color: var(--successColour);
+        }
+
+        input:not([type='checkbox']), input:not([type='radio']), textarea, select {
+            border-color: var(--successColour);
+        }
+    }
+
+    input[disabled] {
+        background: var(--layerLightColour);
+        border: 1px solid var(--borderColour);
+    }
+
+    /*
+     * Checkboxes
+     */
+    input[type=checkbox] {
+        display: block;
+        margin: 20px;
+        padding: 0;
+    }
+
+    input[type=checkbox], input[type=radio] {
+        position: absolute;
+        left: -9999px;
+
+        & + label {
+            position: relative;
+            padding: 0 0 0 30px;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+
+            &:before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                border: 1px solid var(--borderColour);
+                cursor: pointer;
+                content: '';
+                background: #fff;
+            }
+
+            &:after {
+                position: absolute;
+                top: 13px;
+                left: 4px;
+                width: 13px;
+                .rems(15);
+                opacity: 0;
+                transition: opacity 0.25s;
+                transform: translateY(-50%);
+                content: url("../../../wordpress-starter-theme/images/icons/check.svg");
+                color: var(--primaryColour);
+            }
+        }
+
+        &:checked {
+
+            & + label {
+
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &[type=radio] {
+
+            & + label {
+
+                &:before {
+                    border-radius: 100%;
+                    content: '';
+                }
+
+                &:after {
+                    position: absolute;
+                    top: 5px;
+                    left: 5px;
+                    background: #fff;
+                    width: 12px;
+                    height: 12px;
+                    background: var(--primaryColour);
+                    border-radius: 100%;
+                    transform: scale(0);
+                    transition: transform 0.25s;
+                    content: '';
+                }
+            }
+
+            &:checked {
+
+                & + label {
+
+                    &:after {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
+        /*
+         * Set outline when keyboarding
+         */
+        &:focus + label {
+
+            &:before {
+                border: 1px solid var(--primaryColour);
+            }
+        }
+    }
+}
+
+/*
+ * Form inline styles
+ */
+
+.formInline {
+
+    .row {
+
+        .buttonInline {
+            clear: none;
+        }
+
+        label {
+            width: 30%;
+            padding: 8px 0; // padding adjusted to compensate for border on input
+        }
+
+        .inputWrap {
+            padding: 0 0 0 20px;
+            width: 70%;
+        }
+    }
+
+    .validationMessage {
+        width: 70%;
+        float: right;
+        padding-left: 20px;
+
+        @media @mobile {
+            padding-left: 0;
+            width: 100%;
+            float: none;
+        }
+    }
+
+    input[type=radio] + label + div,
+    input[type=checkbox] + label + div {
+        float: none;
+        width: 100%;
+        padding-left: 30px;
+    }
+
+    @media @mobile {
+
+        .row {
+
+            label {
+                clear: both;
+                width: 100%;
+            }
+
+            .inputWrap {
+                padding: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.v-select {
+
+    .vs__dropdown-toggle {
+        border: 0;
+        background: var(--layerLightColour);
+        padding: 12px 15px;
+    }
+}

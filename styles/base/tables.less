@@ -1,0 +1,70 @@
+/*
+ * Tables
+ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 0 @margin;
+    table-layout: fixed;
+
+    td, th {
+        padding: 10px 0;
+        text-align: left;
+        line-height: 22px;
+
+        @media @tablet, @mobile {
+            padding: 10px 0;
+        }
+    }
+
+    th {
+        font-weight: 700;
+    }
+}
+
+/*
+ * Add borders to table
+ */
+table.bordered {
+    border: 1px solid var(--borderColour);
+
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid var(--borderColour);
+
+        @media @tablet, @mobile {
+            padding: 10px;
+        }
+    }
+}
+
+/*
+ * Table style that stops left and right borders and padding
+ * for an edge to edge effect.
+ */
+table.noPadding {
+    border-left: 0;
+    border-right: 0;
+
+    tr {
+
+        td:first-child, th:first-child {
+            padding-left: 0;
+        }
+
+        td:last-child, th:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+/*
+ * Alternating background on rows
+ */
+table.alternating {
+
+    tr:nth-child(odd) {
+        background: var(--layerLightColour);
+    }
+}

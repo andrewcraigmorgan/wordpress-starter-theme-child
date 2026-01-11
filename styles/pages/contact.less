@@ -1,0 +1,25 @@
+.contactWrap {
+    .wrapperWidth;
+    padding: 40px 0;
+
+    @media @desktop {
+        display: flex;
+    }
+
+    @media @mobile, @tablet {
+        padding: 20px;
+    }
+
+    .contactMeta, .contactForm {
+        flex: 1;
+        padding: 40px;
+
+        @media @mobile, @tablet {
+            padding: 20px 0;
+        }
+    }
+
+    .contactForm {
+        max-width: 500px;
+    }
+}

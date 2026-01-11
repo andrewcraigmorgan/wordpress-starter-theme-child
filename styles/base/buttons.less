@@ -1,0 +1,63 @@
+.button {
+    position: relative;
+    display: inline-block;
+    background: var(--primaryColour);
+    padding: 12px 20px 10px;
+    cursor: pointer;
+    text-align: center;
+    border: 0;
+    outline: none;
+    text-transform: uppercase;
+    font-family: var(--primaryFont);
+    color: #fff;
+    line-height: 1;
+    font-weight: 600;
+    .rems(18);
+    transition: background-color 0.5s;
+    border-radius: var(--borderRadius);
+    text-decoration: none;
+
+    &:hover {
+        background: darken(@primaryColour, 30%, relative);
+    }
+
+    i {
+        padding-left: 10px;
+    }
+
+    &.buttonSmall {
+        .rems(13);
+    }
+
+    &.buttonLarge {
+        .rems(22)
+    }
+
+    &[disabled] {
+        opacity: 0.5;
+    }
+}
+
+.buttonAlt {
+    .button;
+    background: var(--layerDarkColour);
+    border: 0;
+    color: var(--lightTextColour);
+    transition: background 0.3s;
+
+    &:hover {
+        background: lighten(@layerDarkColour, 10%);
+    }
+}
+
+/*
+ * Button Groups
+ */
+.buttonGroup {
+    clear: both;
+
+    .button {
+        display: block;
+        margin-right: 20px;
+    }
+}

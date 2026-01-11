@@ -1,0 +1,41 @@
+/*
+ * Footer
+ */
+.footerWrap {
+    background: var(--layerLightColour);
+    border-top: 1px solid var(--borderColour);
+    padding: 20px;
+
+    footer {
+        .wrapperWidth;
+        clear: both;
+        position: relative;
+
+        a {
+            color: var(--textColour);
+        }
+
+        .footerMenu {
+            position: relative;
+
+            @media @mobile, @tablet {
+                text-align: center;
+            }
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+
+                a {
+                    color: var(--textColour);
+                    font-family: var(--primaryFont);
+                    padding: 5px 10px;
+
+                    &:hover {
+                        color: var(--primaryFont);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,323 @@
+.menuWrapper {
+    display: flex;
+    align-items: center;
+
+    @media @flyout {
+        display: block;
+    }
+}
+
+.menuMeta {
+    display: flex;
+    align-items: center;
+
+    @media @aboveFlyout {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+    }
+
+    .menuWrapper__icons {
+        display: flex;
+        align-items: center;
+
+        .searchButton {
+            background: 0;
+            outline-offset: 3px;
+            margin-right: @margin;
+            .rems(20);
+        }
+    }
+}
+
+.mainMenu {
+    position: relative;
+
+    @media @aboveFlyout {
+        .fadeNav;
+        margin-right: -20px;
+    }
+
+    li {
+        float: left;
+        position: relative;
+        list-style-type: none;
+
+        @media @flyout {
+            width: 100%;
+
+            &.menu-item-has-children {
+
+                > a {
+                    position: relative;
+                }
+
+                &.open {
+
+                    > a {
+
+                        &:after {
+                            transform: rotate(-90deg);
+                        }
+                    }
+                }
+            }
+        }
+
+        a {
+            padding: 34px 21px 33px;
+            font-family: var(--primaryFont);
+            display: block;
+
+            @media @tablet {
+                padding: 23.5px 15px;
+            }
+
+            @media @flyout {
+                padding: (@margin / 2) @margin;
+                .rems(16);
+            }
+
+            &:focus-visible {
+                outline: 1px solid var(--textColour);
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
+
+            > a {
+                text-decoration: underline;
+            }
+        }
+
+        /*
+         * Sub Navigation
+         */
+        @media @aboveFlyout {
+
+            ul {
+                position: absolute;
+                left: 0;
+                top: 100%;
+                background: var(--layerDarkColour);
+                width: 295px;
+                padding: 25px 0;
+                border-top: 9px solid var(--primaryColour);
+
+                .sub-menu {
+                    top: 0;
+                    left: 100%;
+                }
+
+                li {
+                    width: 100%;
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    a {
+                        font-family: var(--primaryFont);
+                        .rems(14);
+                        font-weight: 400;
+                        letter-spacing: 0.88px;
+                        line-height: 19px;
+                        padding: 5px 25px;
+                        color: var(--textColour);
+                    }
+                }
+            }
+        }
+
+        @media @flyout {
+
+            a {
+                color: #fff;
+            }
+
+            ul {
+                display: none;
+
+                li {
+
+                    a {
+                        padding-left: 20px;
+                        color: #fff;
+                    }
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+ * Toggle button within headerWrap
+ */
+.menuTrigger {
+    display: none;
+    cursor: pointer;
+    color: var(--textColour);
+    text-decoration: none;
+    text-transform: uppercase;
+    .rems(14);
+    line-height: 1;
+    background: 0;
+
+    &:focus-visible {
+        .outline;
+        outline-offset: 3px;
+    }
+
+    @media @flyout {
+        display: inline-block;
+    }
+}
+
+/*
+ * Toggle button inside menu
+ */
+.flyoutButton {
+    display: none;
+    margin: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    cursor: pointer;
+    background: 0;
+
+    &:focus-visible {
+        .outline;
+    }
+
+    @media @flyout {
+        display: inline-block;
+    }
+}
+
+/*
+ * Transition for fixed flyout
+ */
+
+.footerWrap, .siteInnerWrapper {
+    transition: transform @flyoutTransitionTime ease-in-out;
+}
+
+.headerWrap {
+    transition: left @flyoutTransitionTime ease-in-out, right @flyoutTransitionTime ease-in-out;
+}
+
+.fixedFlyout {
+
+    .headerWrap {
+
+        @media @flyout {
+            position: fixed;
+            width: 100%;
+            min-width: 320px;
+            top: 0;
+        }
+    }
+}
+
+/*
+ * Mobile menu rules
+ */
+@media @flyout {
+
+    .flyoutWrap {
+        position: fixed;
+        top: 0;
+        width: @flyoutWidth;
+        background: @flyoutBackground;
+        z-index: 20;
+        overflow: auto;
+        display: none;
+
+        .flyoutInitialised & {
+            display: block;
+            transition: transform @flyoutTransitionTime ease-in-out;
+        }
+    }
+
+    .flyoutRight {
+
+        .flyoutWrap {
+            left: 100%;
+            bottom: 0;
+        }
+
+        .headerWrap {
+            right: 0;
+        }
+
+        &.flyoutActive {
+
+            .flyoutWrap {
+                transform: translateX(-100%);
+            }
+
+            &.flyoutMove {
+
+                .siteInnerWrapper, .footerWrap {
+                    transform: translateX(-@flyoutWidth);
+                }
+
+                .headerWrap {
+                    right: @flyoutWidth;
+                }
+            }
+        }
+    }
+
+    .flyoutLeft {
+
+        .flyoutWrap {
+            right: 100%;
+            bottom: 0;
+        }
+
+        .headerWrap {
+            left: 0;
+        }
+
+        &.flyoutActive {
+
+            .flyoutWrap {
+                transform: translateX(100%);
+            }
+
+            &.flyoutMove {
+
+                .siteInnerWrapper, .footerWrap {
+                    transform: translateX(@flyoutWidth);
+                }
+
+                .headerWrap {
+                    left: @flyoutWidth;
+                }
+            }
+        }
+    }
+
+    .flyoutTop {
+
+        .flyoutWrap {
+            width: 100%;
+            transform: translateY(-100%);
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &.flyoutActive {
+
+            .flyoutWrap {
+                transform: translateY(0);
+            }
+        }
+    }
+}

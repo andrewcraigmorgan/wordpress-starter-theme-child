@@ -1,0 +1,87 @@
+/*
+ * Page Content Class
+ */
+.pageContent, .elementor-text-editor {
+
+    blockquote {
+        .rems(20);
+        font-weight: 700;
+        margin: 0 0 15px;
+        padding: 0;
+        line-height: 26px;
+        position: relative;
+
+        p {
+            margin: 0 0 5px;
+            line-height: 26px;
+
+            &:first-child {
+
+                &:before {
+                    content: '\201C';
+                    display: inline;
+                }
+            }
+
+            &:last-of-type {
+                margin: 0;
+
+                &:after {
+                    content: '\201D';
+                    display: inline;
+                }
+            }
+        }
+
+        cite {
+            .rems(16);
+            line-height: 1;
+            font-style: italic;
+
+            a {
+                color: var(--textColour);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    /*
+     * Tiny mce produces left and right images with these attributes
+     */
+    img[style="float: left;"] {
+        margin: 5px 25px 25px 0;
+    }
+
+    img[style="float: right;"] {
+        margin: 5px 0 25px 25px;
+    }
+
+    img[style="float: right;"], img[style="float: left;"] {
+
+        @media @mobile {
+            float: none !important;
+            display: block;
+            margin: 0 auto @margin;
+        }
+    }
+
+    ul, ol {
+        margin: 0 0 @margin;
+        padding: 0 0 0 @margin;
+    }
+
+    ul {
+
+        li {
+            list-style-type: disc;
+        }
+    }
+
+    .wp-block-embed {
+        margin: 0 0 @margin;
+    }
+}
