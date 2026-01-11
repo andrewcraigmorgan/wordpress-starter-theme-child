@@ -13,3 +13,95 @@ Tags: custom-menu, blog
 Tested up to: 6.7
 Requires PHP: 8.2
 */
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* Remove default margins from block content */
+.wp-site-blocks {
+	padding: 0;
+}
+
+.wp-site-blocks > * + * {
+	margin-block-start: 0;
+}
+
+/* Full width blocks support */
+.wp-block-cover.alignfull,
+.wp-block-group.alignfull {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+/* Typography refinements */
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: -0.02em;
+}
+
+p {
+	margin-top: 0;
+}
+
+/* Button styling */
+.wp-block-button__link {
+	transition: opacity 0.2s ease;
+}
+
+.wp-block-button__link:hover {
+	opacity: 0.9;
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	border: 2px solid currentColor;
+	background: transparent;
+}
+
+/* Navigation styling */
+.wp-block-navigation a {
+	text-decoration: none;
+}
+
+.wp-block-navigation a:hover {
+	opacity: 0.7;
+}
+
+/* Columns spacing */
+.wp-block-columns {
+	margin-bottom: 0;
+}
+
+/* Cover block */
+.wp-block-cover {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* Group block spacing reset */
+.wp-block-group:where(:not([class*="padding"])) > .wp-block-group__inner-container {
+	padding: 0;
+}
+
+/* Social links */
+.wp-block-social-links a {
+	transition: opacity 0.2s ease;
+}
+
+.wp-block-social-links a:hover {
+	opacity: 0.7;
+}
